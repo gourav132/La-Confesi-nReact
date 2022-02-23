@@ -1,0 +1,48 @@
+/* style = {{
+    border: "0.1px solid rgba(248,113,113)",
+    borderRadius: "8px"
+}} */
+
+.delete-warning-button{
+    width: 100%;
+    background-color: #1e1e1e;
+    border: 1px solid #ff6b6b;
+    color: #9e9695;
+    margin-top: 10px;
+    border-radius: 8px;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+}
+.delete-warning-button:hover{
+    color: #ff6b6b;
+    background-color: #121212;
+}
+.delete-warning-button:focus{
+    outline: none;
+}
+
+.delete-cancel-button{
+    width: 100%;
+    background-color: #1e1e1e;
+    border: 1px solid #6b86ff;
+    color: #9e9695;
+    margin-top: 10px;
+    border-radius: 8px;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+}
+.delete-cancel-button:hover{
+    color: #6b86ff;
+    background-color: #121212;
+}
+.delete-cancel-button:focus{
+    outline: none;
+}
+.button-group{
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,6 @@
+.sidebar-option{
+    display: flex;
+}
+.activeLink{
+    color: #4C7C90;
+}

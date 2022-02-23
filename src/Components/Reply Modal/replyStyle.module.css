@@ -1,0 +1,20 @@
+.title{
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+}
+
+.message{
+    font-size: 16px;
+    color: #c1c1c1;
+}
+
+.textarea{
+    border-radius: 5px;
+    background-color: inherit;
+    border: 1px solid;
+    color: #e5e7eb;
+}
+.textarea:focus{
+    background-color: inherit;
+}

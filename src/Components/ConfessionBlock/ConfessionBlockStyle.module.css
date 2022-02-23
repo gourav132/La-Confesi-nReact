@@ -1,0 +1,13 @@
+.confessionBlock{
+    background-color: #1e1e1e;
+    margin: auto;
+    margin-bottom: 25px;
+    /* border-radius: 6px; */
+}
+.subHeading{
+    color: #e4e4e4;
+}
+.confession{
+    color: #e4e4e4;
+    font-weight: 300;
+}

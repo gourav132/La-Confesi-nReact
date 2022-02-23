@@ -1,0 +1,179 @@
+$primary : #ffffff;
+$secondary : #dbdbdb;
+$primaryBtnFrom : #36728b;
+$primaryBtnTo : #324d8d;
+$success: #50CB93;
+$danger: #D54C4C;
+
+$primaryText : #000000;
+$secondaryText : #1f1f1f;
+$tertiaryText : #2b2b2b;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    background-color: $primary; 
+    min-height: 100vh;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.submit{
+  padding: 8px;
+  border-radius: 8px;
+  color: #ffffff;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  transition: all .2s ease;
+  
+  /* background-color: #C3BA85; */
+  
+  /* background: #EEB76B;
+  background: -webkit-linear-gradient(left, #EEB76B, #DAD5AB);
+  background: -moz-linear-gradient(left, #EEB76B, #DAD5AB);
+  background: linear-gradient(to right, #EEB76B, #DAD5AB); */
+  
+  background: $primaryBtnFrom;
+  background: -webkit-linear-gradient(right, $primaryBtnFrom, $primaryBtnTo);
+  background: -moz-linear-gradient(right, $primaryBtnFrom, $primaryBtnTo);
+  background: linear-gradient(to left, $primaryBtnFrom, $primaryBtnTo);
+
+  /* background: #00C9FF;
+  background: -webkit-linear-gradient(right, #00C9FF, #92FE9D);
+  background: -moz-linear-gradient(right, #00C9FF, #92FE9D);
+  background: linear-gradient(to right, #00C9FF, #92FE9D); */
+
+
+}
+.secondary-button{
+  padding: 8px;
+  border-radius: 8px;
+  color: #ffffff;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  transition: all .1s ease;
+  border: 1px solid $success;
+  &:hover,:focus{
+    background-color: $primary;
+    box-shadow: 0px 0px 4px 1px $success;
+  }
+}
+.danger-button{
+  padding: 8px;
+  border-radius: 8px;
+  color: #ffffff;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  transition: all .1s ease;
+  border: 1px solid $danger;
+  &:hover,:focus{
+    background-color: $primary;
+    box-shadow: 0px 0px 4px 1px $danger;
+  }
+}
+
+.error{
+  text-align: center;
+  color: $danger;
+}
+
+.navbar{
+  color: white;
+  // background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+  // background-clip: text;
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  &:hover{
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.input{
+  border-radius: 8px;
+  background-color: $primary;
+  border: 0.2px solid rgb(138, 138, 138);
+  &:focus{
+    background-color: #121212;
+    box-shadow: 0px 0px 4px 2px #4154c3;
+  }
+}
+
+.link{
+  text-align: center;
+  color: $tertiaryText;
+  &:hover,:focus{
+    outline: none;
+    color: $secondaryText;
+  }
+}
+
+.box-wrapper{
+  margin-top: 30px;
+  padding: 35px;
+  background-color: $secondary;
+  border-radius: 16px;
+}
+
+.heading{
+  color: $primaryText;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.sub-heading{
+  color: $secondaryText;
+  font-weight: 300;
+}
+
+.sub-sub-heading{
+  color: $tertiaryText;
+  font-weight: 300;
+}
+
+.remove-highlight:hover{
+  outline: none;
+}
+
+.modal-body{
+  background-color: #121212;
+  border-radius: 12px;  
+}
+
+.confessionBlock{
+  background-color: $secondary;
+  margin: auto;
+  margin-bottom: 25px
+}
+
+.no-confession{
+  margin-top: 10px;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  background-color: $secondary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+
+  h1{
+    color: $primaryText
+  }
+  .instruction{
+    color: $tertiaryText;
+  }
+}
