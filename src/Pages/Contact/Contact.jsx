@@ -6,36 +6,22 @@ import style from './ContactStyle.module.css';
 import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from '@mui/icons-material/Done';
+import { useForm } from 'react-hook-form';
+import Test from './Test';
 
 
 
 export default function Contact() {
 
-    const [ inputs, setInputs ] = useState({
-        Name: '',
-        Email: '',
-        Feedback: ''
-    })
-
-    const [ alert, setAlert ] = useState({
-        Type: 'success',
-        Status: false,
-        Msg: ''
-    })
-
-    const [ validation, setValidation ] = useState({
-        name: false,
-        email: false,
-        query: false
-    })
-
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [ alert, setAlert ] = useState({ Type: 'success', Status: false, Msg: '' })
     const [ loading, setLoading ] = useState(false);
 
-    const handleQuery = (e) => {
-        if(validation.name === false && validation.email === false && validation.query === false)  {
-        e.preventDefault();
+    const handleQuery = (data) => {
+        console.log("data -> ", data);
         setLoading(true);
-        firestore.collection("Feedback").add(inputs).then(() => {
+        firestore.collection("Feedback").add(data).then(() => {
             setLoading(false);
             setAlert({ Type: 'success', Status: true, Msg: 'Thank you for your feedback'});
         })
@@ -44,30 +30,7 @@ export default function Contact() {
             setLoading(false);
         })
     }
-    }
 
-    const handleChange = (event, target) => {
-        setInputs({
-            ...inputs,
-            [target]: event.target.value
-        });
-        setAlert({ ...alert, Status: false });
-    }
-
-    const handleValidation = () => {
-        console.log(inputs)
-        if(inputs.Name === ''){
-            setValidation({...validation, name: true })
-        }
-        if(inputs.Email === ''){
-            setValidation({...validation, email: true })
-        }
-        if(inputs.Feedback === ''){
-            setValidation({...validation, query: true })
-        }
-        console.log(validation)
-        handleQuery();
-    }
 
     return (
         <div>
@@ -95,38 +58,40 @@ export default function Contact() {
                     </Alert>
                 </Collapse>
             </Box>
+            <form onSubmit = { handleSubmit(handleQuery) }>
+                <TextField 
+                    fullWidth  margin='normal' label="Full Name" name = 'fullName'
+                    {...register("fullName", { required: "First Name is required." })}
+                    error={Boolean(errors.fullName)}
+                    helperText={errors.fullName?.message}
+                />
+                <TextField 
+                    fullWidth margin='normal'label="Email Address" name = "email"
+                    {...register("email", { required: "Email is required." })}
+                    error={Boolean(errors.email)}
+                    helperText={errors.email?.message}
+                />
+                <TextField 
+                    rows={5} maxRows={8} fullWidth multiline margin='normal' label="Your query" name = 'feedBack'
+                    {...register("feedBack", { required: "Feedback is required." })}
+                    error={Boolean(errors.feedBack)}
+                    helperText={errors.feedBack?.message}
+                />
 
-            <TextField 
-                fullWidth  margin='normal' label="Full Name" error = { validation.name }
-                onChange   = { (e) => {
-                    handleChange(e, "Name");
-                }} 
-            />
-            <TextField 
-                fullWidth margin='normal'label="Email Address" error = { validation.email }
-                onChange = { (e) => { 
-                    handleChange(e, "Email")
-                }}
-            />
-            <TextField 
-                rows={5} maxRows={8} fullWidth multiline margin='normal' label="Your query" error = { validation.query }
-                onChange = { (e) => { 
-                    handleChange(e, "Feedback");
-                }}
-            />
+                <LoadingButton
+                fullWidth
+                    loading = { loading }
+                    sx = {{ marginTop: 2, marginBottom: 2 }}
+                    loadingPosition="start"
+                    startIcon={<DoneIcon />}
+                    variant="outlined"
+                    type = "submit"
+                >
+                    { loading? "Submitting..." : "Submit" }
+                </LoadingButton>
+            </form>
 
-            <LoadingButton
-            fullWidth
-                loading = { loading }
-                sx = {{ marginTop: 2, marginBottom: 2 }}
-                loadingPosition="start"
-                // startIcon={<SaveIcon />}
-                variant="outlined"
-                onClick = { (e) => handleQuery(e) }
-                // onClick = { handleValidation }
-            >
-                { loading? "Submitting..." : "Submit" }
-            </LoadingButton>
+        {/* <Test/> */}
         </div>
         </div>
     )
